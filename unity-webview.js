@@ -68,7 +68,8 @@ var unityWebView =
         },
 
         loadURL: function(name, url) {
-            this.iframe(name).attr('loaded', 'false')[0].contentWindow.location.replace(url);
+          var baseUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, "");
+          this.iframe(name).attr('loaded', 'false')[0].contentWindow.location.replace(baseUrl + url);
         },
 
         evaluateJS: function (name, js) {

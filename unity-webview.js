@@ -71,7 +71,8 @@ var unityWebView =
             var baseUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, "");
             console.log(url, window.location.origin, window.location.pathname);
             console.log(baseUrl);
-            this.iframe(name).attr('loaded', 'false')[0].contentWindow.location.replace('https://immutable.github.io/unity-sample-game-webgl' + url);
+            const host = window.location.origin.includes('localhost') ? window.location.origin : 'https://immutable.github.io/unity-sample-game-webgl';
+            this.iframe(name).attr('loaded', 'false')[0].contentWindow.location.replace(host + url);
         },
 
         evaluateJS: function (name, js) {
